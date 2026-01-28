@@ -22,7 +22,9 @@ exports.createPost = (req, res, next) => {
         post: { 
             id: new Date().toISOString(),
             tile: title, 
-            content: content
+            content: content,
+            creator: { name: 'HarshChavda'},
+            createdAt: new Date()
         }
     })
 }
