@@ -1,5 +1,8 @@
 const express = require("express");
 const bodyParser = require('body-parser')
+const mongoose = require('mongoose')
+
+
 const feedRoutes = require('./routes/feed');
 
 const app = express();
@@ -21,6 +24,9 @@ app.get('/', (req, res) => {
 app.use((req, res) => {
     res.status(404).json({ message: "NO PAGE FOUND" })
 })
-app.listen(8080, () => {
-    console.log("Server running on port 8080");
-});
+
+mongoose.connect('mongodb+srv://harsh:TgAbadjyizLSNgSb@cluster0.hd2zhoa.mongodb.net/messages?appName=Cluster0').then(result => {
+    app.listen(8080)
+})
+
+
